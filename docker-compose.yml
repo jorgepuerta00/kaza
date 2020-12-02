@@ -1,0 +1,37 @@
+version: '3.4'
+
+services:
+  seekq.api.gateway.bff:
+    image: ${DOCKER_REGISTRY-}seekqapigateway
+    ports:
+      - "32700:80"
+    build:
+      context: .
+      dockerfile: SeekQ.Api.Gateway.BFF/Dockerfile
+    depends_on:
+      - seekqmssql
+
+  seekq.userassets.api:
+    image: ${DOCKER_REGISTRY-}seekquserassets
+    ports:
+      - "32706:80"
+    build:
+      context: .
+      dockerfile: SeekQ.UserAssets.Api/Dockerfile
+    environment:
+      ASPNETCORE_ConnectionStrings__MSSQL: "Server=seekq.mssql,1433;Database=SeekQ.UserAssets;User Id=sa;Password=Password123"
+
+  #ports: host:container
+  seekqmssql:
+    image: "mcr.microsoft.com/mssql/server:2017-latest"
+    container_name: seekq.mssql
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "Password123"
+      ACCEPT_EULA: "Y"
+
+networks:
+  default:
+    external:
+      name: SEEKQ_NETWORK

@@ -1,0 +1,44 @@
+networks:
+  default:
+    external: true
+    name: SEEKQ_NETWORK
+services:
+  seekq.api.gateway.bff:
+    build:
+      context: /Users/jorgepuerta/Projects/SeekQ
+      dockerfile: SeekQ.Api.Gateway.BFF/Dockerfile
+    depends_on:
+      seekqmssql:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:80
+    image: seekqapigateway
+    ports:
+    - published: 32700
+      target: 80
+    - target: 80
+  seekq.userassets.api:
+    build:
+      context: /Users/jorgepuerta/Projects/SeekQ
+      dockerfile: SeekQ.UserAssets.Api/Dockerfile
+    environment:
+      ASPNETCORE_ConnectionStrings__MSSQL: Server=seekq.mssql,1433;Database=SeekQ.UserAssets;User
+        Id=sa;Password=Password123
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:80
+    image: seekquserassets
+    ports:
+    - published: 32706
+      target: 80
+    - target: 80
+  seekqmssql:
+    container_name: seekq.mssql
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: Password123
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    ports:
+    - published: 1433
+      target: 1433
+version: '3.4'

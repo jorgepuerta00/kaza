@@ -1,0 +1,9 @@
+/Users/jorgepuerta/Projects/SeekQ/App.Common/bin/Debug/netcoreapp3.1/App.Common.deps.json
+/Users/jorgepuerta/Projects/SeekQ/App.Common/bin/Debug/netcoreapp3.1/App.Common.dll
+/Users/jorgepuerta/Projects/SeekQ/App.Common/bin/Debug/netcoreapp3.1/App.Common.pdb
+/Users/jorgepuerta/Projects/SeekQ/App.Common/obj/Debug/netcoreapp3.1/App.Common.csprojAssemblyReference.cache
+/Users/jorgepuerta/Projects/SeekQ/App.Common/obj/Debug/netcoreapp3.1/App.Common.AssemblyInfoInputs.cache
+/Users/jorgepuerta/Projects/SeekQ/App.Common/obj/Debug/netcoreapp3.1/App.Common.AssemblyInfo.cs
+/Users/jorgepuerta/Projects/SeekQ/App.Common/obj/Debug/netcoreapp3.1/App.Common.csproj.CoreCompileInputs.cache
+/Users/jorgepuerta/Projects/SeekQ/App.Common/obj/Debug/netcoreapp3.1/App.Common.dll
+/Users/jorgepuerta/Projects/SeekQ/App.Common/obj/Debug/netcoreapp3.1/App.Common.pdb
